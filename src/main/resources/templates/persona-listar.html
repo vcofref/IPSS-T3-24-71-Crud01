@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/master}">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Personas</title>
+</head>
+<body>
+    <div layout:fragment="page-content">
+        <h1>Lista de Personas</h1>      
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="persona : ${personas}">
+                    <td th:text="${persona.id}"></td>
+                    <td th:text="${persona.nombre}"></td>
+                    <td th:text="${persona.apellido}"></td>
+                    <td>
+                        <div class="btn-group">
+                            <a th:href="@{/editar/{id}(id=${persona.id})}" class="btn btn-warning">Editar</a>
+                            <a th:href="@{/eliminar/{id}(id=${persona.id})}" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>  
+    </div>
+    
+</body>
+</html>
